@@ -1,38 +1,25 @@
 import os
 
-from fila_musicas import (
-    adicionar_musica,
-    mostrar_programacao
-)
+from fila_musicas import adicionar_musica, mostrar_programacao
+from historico import tocar_proxima, mostrar_historico
+from ranking import curtir_musica, mostrar_ranking
 
-from historico import (
-    tocar_proxima,
-    mostrar_historico
-)
-
-from ranking import (
-    curtir_musica,
-    mostrar_ranking
-)
 
 def limpar_tela():
+    # Executa o comando de limpar o terminal 
+    os.system("cls" if os.name == "nt" else "clear")
 
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
 
 def pausar():
     input("\nPressione Enter para continuar...")
 
+
 def menu():
-
     while True:
-
         limpar_tela()
 
         print("\n========================")
-        print("      RADIOFLOW")
+        print("        RADIOFLOW       ")
         print("========================")
         print("1 - Adicionar música")
         print("2 - Tocar próxima música")
@@ -44,9 +31,11 @@ def menu():
 
         try:
             opcao = int(input("\nEscolha: "))
-        except:
-            opcao = ""
+        except ValueError:
+            # Captura apenas erro de digitação (letras) e joga um valor inválido
+            opcao = -1  
 
+        # Dicionário simulando um "Switch-Case" para mapear as ações do menu
         funcoes = {
             1: adicionar_musica,
             2: tocar_proxima,
@@ -56,16 +45,16 @@ def menu():
             6: mostrar_ranking
         }
 
-        if opcao in funcoes.keys():
+        # Verifica e executa a função mapeada direto pelo dicionário
+        if opcao in funcoes:
             funcoes[opcao]()
             pausar()
-
         elif opcao == 0:
             print("Sistema encerrado.")
             break
-
         else:
             print("❌ Opção inválida!")
             pausar()
 
+# Inicializa o programa
 menu()

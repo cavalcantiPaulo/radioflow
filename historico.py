@@ -1,43 +1,40 @@
 from fila_musicas import fila_musicas
 
-historico = []
+# Pilha para armazenar o histórico
+pilha_historico = [] 
 musica_atual = None
 
 def tocar_proxima():
     global musica_atual
 
-    if not fila_musicas:
-        print("Nenhuma música na fila.")
+    if len(fila_musicas) == 0:
+        print("A fila está vazia. Nada para tocar no momento.")
         return
 
+    # Retira a próxima música da fila
     musica_atual = fila_musicas.popleft()
 
-    historico.append(musica_atual)
+    # PUSH: Adiciona no topo do histórico
+    pilha_historico.append(musica_atual)
 
-    print(
-        f"\n🎵 Tocando: "
-        f"{musica_atual['titulo']} - {musica_atual['artista']}"
-    )
+    print(f"\n▶️ Tocando agora: {musica_atual['titulo']} (de {musica_atual['artista']})")
+
 
 def mostrar_historico():
-
-    if not historico:
-        print("Histórico vazio.")
+    if not pilha_historico:
+        print("O histórico está vazio.")
         return
 
-    print("\n=== HISTÓRICO ===")
+    print("\n--- HISTÓRICO ---")
 
-    copia_historico = historico.copy()
-
-    indice = 1
-
-    while copia_historico:
-
-        musica = copia_historico.pop()
-
-        print(
-            f"{indice}. "
-            f"{musica['titulo']} - {musica['artista']}"
-        )
-
-        indice += 1
+    # Cópia para iterar com 'pop' sem apagar o histórico original
+    pilha_temp = pilha_historico.copy()
+    
+    posicao = 1
+    
+    while pilha_temp:
+        # POP: Remove e retorna o último elemento
+        musica = pilha_temp.pop()
+        
+        print(f"{posicao}º | {musica['titulo']} - {musica['artista']}")
+        posicao += 1

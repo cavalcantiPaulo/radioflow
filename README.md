@@ -20,4 +20,4 @@ Papéis de cada integrante:
 - Maria Clara:
   - ;
 - Leanderson:
-  - ;
+  - Integração do módulo de histórico, que toca a próxima música e mostra o histórico de músicas tocadas.;
