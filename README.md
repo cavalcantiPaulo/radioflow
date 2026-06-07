@@ -16,7 +16,7 @@ Papéis de cada integrante:
 - Paulo:
   - Verificiação do código, criação do repo e do markdown;
 - Vicenzo:
-  - ;
+  - Integração de todos os modúlos do projeto na main;
 - Maria Clara:
   - ;
 - Leanderson:
