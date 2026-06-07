@@ -42,33 +42,25 @@ def menu():
         print("6 - Mostrar ranking")
         print("0 - Sair")
 
-        opcao = input("\nEscolha: ")
+        try:
+            opcao = int(input("\nEscolha: "))
+        except:
+            opcao = ""
 
-        if opcao == "1":
-            adicionar_musica()
+        funcoes = {
+            1: adicionar_musica,
+            2: tocar_proxima,
+            3: mostrar_programacao,
+            4: curtir_musica,
+            5: mostrar_historico,
+            6: mostrar_ranking
+        }
+
+        if opcao in funcoes.keys():
+            funcoes[opcao]()
             pausar()
 
-        elif opcao == "2":
-            tocar_proxima()
-            pausar()
-
-        elif opcao == "3":
-            mostrar_programacao()
-            pausar()
-
-        elif opcao == "4":
-            curtir_musica()
-            pausar()
-
-        elif opcao == "5":
-            mostrar_historico()
-            pausar()
-
-        elif opcao == "6":
-            mostrar_ranking()
-            pausar()
-
-        elif opcao == "0":
+        elif opcao == 0:
             print("Sistema encerrado.")
             break
 
