@@ -18,6 +18,6 @@ Papéis de cada integrante:
 - Vicenzo:
   - Integração de todos os modúlos do projeto na main;
 - Maria Clara:
-  - ;
+  - Incorporação da fila no código;
 - Leanderson:
   - ;
